@@ -1424,6 +1424,8 @@ div[class*="mesh"] {
     .hero-image-container {
         min-height: auto !important;
         padding: 20px !important;
+        margin-top: 2rem !important;
+        margin-bottom: 2rem !important;
     }
     
     .hero-content {
@@ -1436,8 +1438,9 @@ div[class*="mesh"] {
     }
     
     .service-card {
-        padding: 1.5rem !important; /* Scale back the padding on mobile */
-        gap: 1.2rem !important;
+        padding: 2.5rem !important; /* Increased padding as requested */
+        margin: 0 5% !important; /* Added left and right margin */
+        gap: 1.5rem !important;
     }
     
     .service-card h3 {
@@ -1579,7 +1582,8 @@ div[class*="mesh"] {
     .hero-image-container {
         min-height: auto !important;
         padding: 10px !important;
-        margin-top: -20px; /* Pull logo closer to buttons */
+        margin-top: 2rem !important;
+        margin-bottom: 2rem !important;
     }
     
     .feature {
@@ -1603,8 +1607,9 @@ div[class*="mesh"] {
     }
     
     .service-card {
-        padding: 1rem !important;
-        gap: 1rem !important;
+        padding: 1.5rem !important; /* Increased for extra narrow too */
+        margin: 0 4% !important;
+        gap: 1.2rem !important;
     }
     
     .service-card h3 {
