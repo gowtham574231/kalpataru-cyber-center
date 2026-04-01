@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <nav className="navbar glass-panel">
       <div className="logo">
-        <i className="fa-solid fa-desktop"></i> Kalpataru Cyber Center
+        <i className="fa-solid fa-desktop"></i> Kalpsssataru Cyber Center
       </div>
       <button className="mobile-menu-btn" onClick={toggleMenu}>
         <i className="fa-solid fa-bars"></i>
