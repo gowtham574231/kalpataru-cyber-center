@@ -591,11 +591,13 @@ section {
     font-size: 1.8rem;
     font-weight: 950;
     margin-bottom: 1rem;
+    transition: all 0.3s ease;
 }
 
 .feature p {
     font-size: 1.1rem;
     font-weight: 600;
+    transition: all 0.3s ease;
 }
 
 /* Feature Color Variants */
@@ -1435,8 +1437,23 @@ div[class*="mesh"] {
     }
     
     .feature {
-        width: 300px !important;
-        padding: 2rem !important;
+        width: 280px !important;
+        padding: 1.5rem !important;
+        gap: 1rem !important;
+    }
+    
+    .feature-icon {
+        width: 70px !important;
+        height: 70px !important;
+        font-size: 2rem !important;
+    }
+    
+    .feature h3 {
+        font-size: 1.3rem !important;
+    }
+    
+    .feature p {
+        font-size: 0.9rem !important;
     }
     
     .whatsapp-agent-container {
@@ -1468,6 +1485,21 @@ div[class*="mesh"] {
     .floating-logo {
         width: 65px !important;
         height: 65px !important;
+    }
+    
+    .contact-container {
+        flex-direction: column !important;
+        gap: 2rem !important;
+    }
+    
+    .contact-info-card,
+    .contact-form {
+        padding: 1.5rem !important;
+    }
+    
+    .contact-list li {
+        font-size: 0.95rem !important;
+        gap: 1rem !important;
     }
     
     .about-grid {
@@ -1506,8 +1538,23 @@ div[class*="mesh"] {
     }
     
     .feature {
-        width: 260px !important;
-        padding: 1.5rem !important;
+        width: 240px !important;
+        padding: 1.2rem !important;
+        gap: 0.8rem !important;
+    }
+    
+    .feature-icon {
+        width: 60px !important;
+        height: 60px !important;
+        font-size: 1.8rem !important;
+    }
+    
+    .feature h3 {
+        font-size: 1.1rem !important;
+    }
+    
+    .feature p {
+        font-size: 0.85rem !important;
     }
     
     .service-card {
@@ -1556,6 +1603,20 @@ div[class*="mesh"] {
     .floating-logo {
         width: 45px !important;
         height: 45px !important;
+    }
+    
+    .contact-info-card,
+    .contact-form {
+        padding: 1.2rem !important;
+    }
+    
+    .contact-list li {
+        font-size: 0.85rem !important;
+    }
+    
+    .btn-whatsapp-full {
+        padding: 0.8rem !important;
+        font-size: 0.9rem !important;
     }
     
     .floating-logo i {
