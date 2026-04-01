@@ -344,13 +344,30 @@ section {
 }
 
 @keyframes orbit5 {
-    from {
-        transform: translate(-50%, -50%) rotate(288deg) translateX(230px) rotate(-288deg);
-    }
+    from { transform: translate(-50%, -50%) rotate(288deg) translateX(230px) rotate(-288deg); }
+    to { transform: translate(-50%, -50%) rotate(648deg) translateX(230px) rotate(-648deg); }
+}
 
-    to {
-        transform: translate(-50%, -50%) rotate(648deg) translateX(230px) rotate(-648deg);
-    }
+/* Mobile Orbiting */
+@keyframes orbit1-m {
+    from { transform: translate(-50%, -50%) rotate(0deg) translateX(130px) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg) translateX(130px) rotate(-360deg); }
+}
+@keyframes orbit2-m {
+    from { transform: translate(-50%, -50%) rotate(72deg) translateX(145px) rotate(-72deg); }
+    to { transform: translate(-50%, -50%) rotate(432deg) translateX(145px) rotate(-432deg); }
+}
+@keyframes orbit3-m {
+    from { transform: translate(-50%, -50%) rotate(144deg) translateX(120px) rotate(-144deg); }
+    to { transform: translate(-50%, -50%) rotate(504deg) translateX(120px) rotate(-504deg); }
+}
+@keyframes orbit4-m {
+    from { transform: translate(-50%, -50%) rotate(216deg) translateX(140px) rotate(-216deg); }
+    to { transform: translate(-50%, -50%) rotate(576deg) translateX(140px) rotate(-576deg); }
+}
+@keyframes orbit5-m {
+    from { transform: translate(-50%, -50%) rotate(288deg) translateX(125px) rotate(-288deg); }
+    to { transform: translate(-50%, -50%) rotate(648deg) translateX(125px) rotate(-648deg); }
 }
 
 @keyframes orbit4 {
@@ -1432,8 +1449,24 @@ div[class*="mesh"] {
         font-size: 0.85rem !important;
     }
     
+    .logo {
+        font-size: 1.15rem !important;
+        gap: 10px !important;
+        white-space: nowrap !important;
+    }
+    
+    .logo i {
+        font-size: 1.6rem !important;
+    }
+    
+    .float-1 { animation: orbit1-m 25s linear infinite !important; }
+    .float-2 { animation: orbit2-m 30s linear infinite !important; }
+    .float-3 { animation: orbit3-m 22s linear infinite !important; }
+    .float-4 { animation: orbit4-m 28s linear infinite !important; }
+    .float-5 { animation: orbit5-m 35s linear infinite !important; }
+
     section {
-        padding: 2rem 5% !important;
+        padding: 3rem 5% !important;
     }
     
     .feature {
@@ -1512,7 +1545,7 @@ div[class*="mesh"] {
     }
     
     .about-image {
-        max-width: 400px !important;
+        max-width: 550px !important; /* Made wider as requested */
         margin: 0 auto;
     }
 }
@@ -1629,7 +1662,16 @@ div[class*="mesh"] {
     }
     
     .about-image {
-        max-width: 250px !important;
+        max-width: 350px !important; /* Wider on extra narrow too */
+    }
+    
+    .logo {
+        font-size: 0.95rem !important; /* Even smaller to fit */
+        gap: 8px !important;
+    }
+    
+    .logo i {
+        font-size: 1.3rem !important;
     }
     
     .about-image img {
