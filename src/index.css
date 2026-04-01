@@ -1499,6 +1499,10 @@ div[class*="mesh"] {
         gap: 1rem !important;
     }
     
+    .about {
+        padding: 3rem 12% !important; /* Increased horizontal margin as requested */
+    }
+    
     .about-grid {
         padding-top: 1rem;
     }
@@ -1632,6 +1636,10 @@ div[class*="mesh"] {
     .about-content p {
         font-size: 0.95rem !important;
         margin-bottom: 1rem !important;
+    }
+    
+    .about {
+        padding: 2rem 10% !important; /* Increased horizontal margin for extra narrow too */
     }
     
     .about-image {
