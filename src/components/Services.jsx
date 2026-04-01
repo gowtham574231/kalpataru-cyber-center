@@ -1,5 +1,5 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const services = [
   {
@@ -37,7 +37,7 @@ const services = [
   },
   {
     title: 'Travel Booking',
-    variant: 'grad-emerald-teal', // Consistency
+    variant: 'grad-emerald-teal',
     img: 'https://images.indianexpress.com/2025/07/train-launch.jpg?w=1200',
     items: [
       { icon: 'fa-train', text: 'Train Tickets', color: '#ef4444' },
@@ -46,17 +46,17 @@ const services = [
   },
   {
     title: 'Online Applications',
-    variant: 'grad-royal-purple', // Consistency
+    variant: 'grad-royal-purple',
     img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
     items: [
       { icon: 'fa-building-columns', text: 'Online Govt Form', color: '#40ff40' },
-      { icon: 'fa-graduation-cap', text: 'Scholarship Apps', color: '#0ea5e9' }, // Cyan instead of pink
+      { icon: 'fa-graduation-cap', text: 'Scholarship Apps', color: '#0ea5e9' },
       { icon: 'fa-briefcase', text: 'Job Applications', color: '#80dfff' },
     ]
   },
   {
     title: 'Digital Services',
-    variant: 'grad-cyan-blue', // Consistency
+    variant: 'grad-cyan-blue',
     img: 'https://hpservicecenterschennai.in/wp-content/uploads/2019/06/img-01.jpg',
     items: [
       { icon: 'fa-keyboard', text: 'Resume Typing', color: '#ffffff' },
@@ -67,44 +67,84 @@ const services = [
 ]
 
 const Services = () => {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [itemsToShow, setItemsToShow] = useState(2)
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setItemsToShow(1)
+      } else {
+        setItemsToShow(2)
+      }
+    }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + itemsToShow >= services.length ? 0 : prevIndex + itemsToShow))
+    }, 5000)
+    return () => clearInterval(interval)
+  }, [itemsToShow])
+
+  const currentServices = services.slice(currentIndex, currentIndex + itemsToShow)
+
   return (
     <section id="services" className="services">
       <h2 className="section-title">Our Services</h2>
-      <div className="service-grid">
-        {services.map((service, index) => (
+      <div className="service-carousel-container">
+        <AnimatePresence mode="wait">
           <motion.div 
-            key={index} 
-            className={`service-card ${service.variant || ''}`}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            whileHover={{ 
-              y: -15, 
-              scale: 1.02,
-              rotateX: 5,
-              rotateY: -5,
-              boxShadow: "0 25px 60px rgba(250, 204, 21, 0.2)",
-              transition: { duration: 0.3 }
-            }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            style={{ perspective: 1000 }}
+            key={currentIndex}
+            className="service-grid carousel-view"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.5 }}
           >
-            <img src={service.img} alt={service.title} className="service-card-img" />
-            <div className="service-content">
-              <h3>{service.title}</h3>
-              <ul>
-                {service.items.map((item, i) => (
-                  <li key={i}>
-                    <i className={`fa-solid ${item.icon}`} style={{ color: item.color }}></i> {item.text}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {currentServices.map((service, index) => (
+              <motion.div 
+                key={service.title} 
+                className={`service-card ${service.variant || ''}`}
+                whileHover={{ 
+                  y: -15, 
+                  scale: 1.02,
+                  boxShadow: "0 25px 60px rgba(250, 204, 21, 0.2)",
+                  transition: { duration: 0.3 }
+                }}
+              >
+                <img src={service.img} alt={service.title} className="service-card-img" />
+                <div className="service-content">
+                  <h3>{service.title}</h3>
+                  <ul>
+                    {service.items.map((item, i) => (
+                      <li key={i}>
+                        <i className={`fa-solid ${item.icon}`} style={{ color: item.color }}></i> {item.text}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
-        ))}
+        </AnimatePresence>
+        
+        <div className="carousel-dots">
+          {Array.from({ length: Math.ceil(services.length / itemsToShow) }).map((_, idx) => (
+            <button
+              key={idx}
+              className={`dot ${currentIndex / itemsToShow === idx ? 'active' : ''}`}
+              onClick={() => setCurrentIndex(idx * itemsToShow)}
+            />
+          ))}
+        </div>
       </div>
     </section>
   )
 }
 
 export default Services
+
