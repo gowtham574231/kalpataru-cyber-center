@@ -1469,6 +1469,22 @@ div[class*="mesh"] {
         width: 65px !important;
         height: 65px !important;
     }
+    
+    .about-grid {
+        flex-direction: column-reverse !important;
+        gap: 2rem !important;
+        padding-top: 1rem;
+    }
+    
+    .about-content p {
+        font-size: 1.1rem !important;
+        line-height: 1.6 !important;
+    }
+    
+    .about-image {
+        max-width: 400px !important;
+        margin: 0 auto;
+    }
 }
 
 /* --- EXTRA NARROW / ZOOMED-IN RESPONSIVENESS --- */
@@ -1546,5 +1562,18 @@ div[class*="mesh"] {
     
     .floating-logo i {
         font-size: 1.2rem !important;
+    }
+    
+    .about-content p {
+        font-size: 0.95rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .about-image {
+        max-width: 250px !important;
+    }
+    
+    .about-image img {
+        padding: 5px !important;
     }
 }
