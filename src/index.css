@@ -754,6 +754,14 @@ section {
 }
 
 /* Contact */
+.contact {
+    padding: 100px 15% !important; /* Added horizontal margins as requested */
+    background: #ffffff;
+}
+
+.contact .section-title {
+    margin-bottom: 2.5rem !important; /* Reduced gap below the title */
+}
 .contact-container {
     display: flex;
     gap: 4rem;
@@ -765,8 +773,31 @@ section {
     background: #f8f9fa !important;
     border: 3px solid #e5e7eb !important;
     padding: 3rem;
-    /* REDUCED SLIGHTLY */
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form h3 {
+    text-align: center; /* Centered as requested */
+    margin-bottom: 2rem;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centered form elements */
+    width: 100%;
+}
+
+.contact-form form input,
+.contact-form form textarea {
+    width: 100% !important;
+}
+
+.contact-form form button {
+    align-self: center; /* Center the submit button */
+    min-width: 200px;
 }
 
 .contact-list {
@@ -1516,6 +1547,14 @@ div[class*="mesh"] {
         max-width: 550px !important; /* Made wider as requested */
         margin: 0 auto;
     }
+    
+    .contact {
+        padding: 4rem 12% !important;
+    }
+    
+    .contact .section-title {
+        margin-bottom: 2rem !important;
+    }
 }
 
 /* --- EXTRA NARROW / ZOOMED-IN RESPONSIVENESS --- */
@@ -1655,6 +1694,18 @@ div[class*="mesh"] {
         font-size: 1.3rem !important;
     }
     
+    .contact {
+        padding: 3rem 10% !important; /* Increased horizontal margin for extra narrow/zoom */
+    }
+    
+    .contact {
+        padding: 2.5rem 10% !important; /* Tightened for extra narrow */
+    }
+
+    .contact .section-title {
+        margin-bottom: 1.5rem !important;
+    }
+
     .about-image img {
         padding: 5px !important;
     }
