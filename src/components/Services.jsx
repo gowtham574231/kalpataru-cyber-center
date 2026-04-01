@@ -68,14 +68,15 @@ const services = [
 
 const Services = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [itemsToShow, setItemsToShow] = useState(2)
+  const [isCarousel, setIsCarousel] = useState(false)
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        setItemsToShow(1)
+      // If width is narrow (mobile or zoomed 150%+ laptop screen usually < 1000px content width)
+      if (window.innerWidth <= 1100) {
+        setIsCarousel(true)
       } else {
-        setItemsToShow(2)
+        setIsCarousel(false)
       }
     }
     handleResize()
@@ -84,63 +85,97 @@ const Services = () => {
   }, [])
 
   useEffect(() => {
+    if (!isCarousel) return
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + itemsToShow >= services.length ? 0 : prevIndex + itemsToShow))
+      setCurrentIndex((prevIndex) => (prevIndex + 2 >= services.length ? 0 : prevIndex + 2))
     }, 5000)
     return () => clearInterval(interval)
-  }, [itemsToShow])
+  }, [isCarousel])
 
-  const currentServices = services.slice(currentIndex, currentIndex + itemsToShow)
+  const currentServices = isCarousel ? services.slice(currentIndex, currentIndex + 2) : services
 
   return (
     <section id="services" className="services">
       <h2 className="section-title">Our Services</h2>
-      <div className="service-carousel-container">
-        <AnimatePresence mode="wait">
-          <motion.div 
-            key={currentIndex}
-            className="service-grid carousel-view"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.5 }}
-          >
-            {currentServices.map((service, index) => (
+      <div className={isCarousel ? "service-carousel-container" : "service-grid"}>
+        {isCarousel ? (
+          <>
+            <AnimatePresence mode="wait">
               <motion.div 
-                key={service.title} 
-                className={`service-card ${service.variant || ''}`}
-                whileHover={{ 
-                  y: -15, 
-                  scale: 1.02,
-                  boxShadow: "0 25px 60px rgba(250, 204, 21, 0.2)",
-                  transition: { duration: 0.3 }
-                }}
+                key={currentIndex}
+                className="carousel-view"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.5 }}
               >
-                <img src={service.img} alt={service.title} className="service-card-img" />
-                <div className="service-content">
-                  <h3>{service.title}</h3>
-                  <ul>
-                    {service.items.map((item, i) => (
-                      <li key={i}>
-                        <i className={`fa-solid ${item.icon}`} style={{ color: item.color }}></i> {item.text}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {currentServices.map((service) => (
+                  <motion.div 
+                    key={service.title} 
+                    className={`service-card ${service.variant || ''}`}
+                    whileHover={{ 
+                      y: -15, 
+                      scale: 1.02,
+                      boxShadow: "0 25px 60px rgba(250, 204, 21, 0.2)",
+                      transition: { duration: 0.3 }
+                    }}
+                  >
+                    <img src={service.img} alt={service.title} className="service-card-img" />
+                    <div className="service-content">
+                      <h3>{service.title}</h3>
+                      <ul>
+                        {service.items.map((item, i) => (
+                          <li key={i}>
+                            <i className={`fa-solid ${item.icon}`} style={{ color: item.color }}></i> {item.text}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+                ))}
               </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
-        
-        <div className="carousel-dots">
-          {Array.from({ length: Math.ceil(services.length / itemsToShow) }).map((_, idx) => (
-            <button
-              key={idx}
-              className={`dot ${currentIndex / itemsToShow === idx ? 'active' : ''}`}
-              onClick={() => setCurrentIndex(idx * itemsToShow)}
-            />
-          ))}
-        </div>
+            </AnimatePresence>
+            
+            <div className="carousel-dots">
+              {Array.from({ length: Math.ceil(services.length / 2) }).map((_, idx) => (
+                <button
+                  key={idx}
+                  className={`dot ${currentIndex / 2 === idx ? 'active' : ''}`}
+                  onClick={() => setCurrentIndex(idx * 2)}
+                />
+              ))}
+            </div>
+          </>
+        ) : (
+          services.map((service, index) => (
+            <motion.div 
+              key={index} 
+              className={`service-card ${service.variant || ''}`}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ 
+                y: -15, 
+                scale: 1.02,
+                boxShadow: "0 25px 60px rgba(250, 204, 21, 0.2)",
+                transition: { duration: 0.3 }
+              }}
+            >
+              <img src={service.img} alt={service.title} className="service-card-img" />
+              <div className="service-content">
+                <h3>{service.title}</h3>
+                <ul>
+                  {service.items.map((item, i) => (
+                    <li key={i}>
+                      <i className={`fa-solid ${item.icon}`} style={{ color: item.color }}></i> {item.text}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))
+        )}
       </div>
     </section>
   )
