@@ -1315,3 +1315,67 @@ div[class*="mesh"] {
 .section-title {
     color: #111827 !important;
 }
+
+/* --- MOBILE RESPONSIVENESS FIXES --- */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem !important;
+        margin-bottom: 2.5rem !important;
+        padding: 0 10px;
+        line-height: 1.3;
+    }
+    
+    .hero-content .animate-text {
+        font-size: 2.5rem !important;
+    }
+    
+    .hero-content .sub-text {
+        font-size: 1rem !important;
+    }
+    
+    .hero {
+        padding: 100px 5% 40px !important;
+    }
+    
+    section {
+        padding: 2rem 5% !important;
+    }
+    
+    .feature {
+        width: 300px !important;
+        padding: 2rem !important;
+    }
+}
+
+/* --- EXTRA NARROW / ZOOMED-IN RESPONSIVENESS --- */
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.5rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .hero-content .animate-text {
+        font-size: 1.8rem !important;
+    }
+    
+    .hero-content .sub-text {
+        font-size: 0.9rem !important;
+    }
+    
+    .hero {
+        padding: 80px 5% 30px !important;
+    }
+    
+    .feature {
+        width: 260px !important;
+        padding: 1.5rem !important;
+    }
+    
+    .service-card-img {
+        height: 140px !important;
+    }
+    
+    .gallery-grid img {
+        height: 200px !important;
+    }
+}
