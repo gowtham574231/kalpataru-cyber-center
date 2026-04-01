@@ -1180,8 +1180,8 @@ section {
 
 @media (max-width: 1100px) {
     .about-grid {
-        flex-direction: column;
-        gap: 4rem;
+        flex-direction: column-reverse !important;
+        gap: 3rem !important;
         text-align: center;
     }
 
@@ -1471,8 +1471,6 @@ div[class*="mesh"] {
     }
     
     .about-grid {
-        flex-direction: column-reverse !important;
-        gap: 2rem !important;
         padding-top: 1rem;
     }
     
