@@ -956,8 +956,8 @@ section {
 
 /* About Us - Premium Restoration */
 .about {
-    padding: 60px 8%;
-    /* CONDENSED */
+    padding: 60px 15%;
+    /* ADDED HORIZONTAL MARGINS */
     background: #ffffff;
 }
 
