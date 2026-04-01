@@ -1,0 +1,88 @@
+.customer-reviews {
+  padding: 6rem 5%;
+  background: var(--bg-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.review-train-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 2rem 0;
+  display: flex;
+}
+
+.review-train {
+  display: flex;
+  gap: 2rem;
+  /* Animation for train moving left to right */
+  animation: scroll-train 25s linear infinite;
+  /* We start from a negative translate so it moves right and loops */
+}
+
+@keyframes scroll-train {
+  0% {
+    transform: translateX(calc(-50% - 1rem));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.review-card {
+  min-width: 350px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.card-green { --card-glow: rgba(0, 255, 128, 0.2); --card-accent: #00ff80; }
+.card-blue { --card-glow: rgba(0, 128, 255, 0.2); --card-accent: #0080ff; }
+.card-purple { --card-glow: rgba(128, 0, 255, 0.2); --card-accent: #8000ff; }
+.card-pink { --card-glow: rgba(255, 0, 128, 0.2); --card-accent: #ff0080; }
+.card-orange { --card-glow: rgba(255, 128, 0, 0.2); --card-accent: #ff8000; }
+.card-cyan { --card-glow: rgba(0, 255, 255, 0.2); --card-accent: #00ffff; }
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px 0 var(--card-glow);
+  border: 1px solid var(--card-accent);
+}
+
+.review-stars {
+  color: var(--card-accent);
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.review-text {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-style: italic;
+  flex-grow: 1;
+}
+
+.review-author {
+  color: var(--card-accent);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: right;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .review-card {
+    min-width: 280px;
+    padding: 1.5rem;
+  }
+}
